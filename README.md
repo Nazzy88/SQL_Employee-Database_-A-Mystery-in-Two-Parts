@@ -1,7 +1,6 @@
-# SQL_Employee-Database_-A-Mystery-in-Two-Parts
+# SQL - Employee Database: A Mystery in Two Parts
 SQL database, Data Engineering,Data Analysis, Data Modeling
 
-# SQL - Employee Database: A Mystery in Two Parts
 
 ![sql.png](sql.png)
 
@@ -19,7 +18,7 @@ Note: You may hear the term "Data Modeling" in place of "Data Engineering," but 
 
 #### Data Modeling
 Inspect the CSVs and sketch out an ERD of the tables. Feel free to use a tool like QuickDBD
-![ERD.png](images/ERD.png)
+![erd2.png](images/erd2.png)
 
 #### Data Engineering
 
