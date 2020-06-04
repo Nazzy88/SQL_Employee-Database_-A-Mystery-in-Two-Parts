@@ -1,5 +1,5 @@
 # SQL - Employee Database: A Mystery in Two Parts
-SQL database, Data Engineering,Data Analysis, Data Modeling
+SQL Database, Data Engineering,Data Analysis, Data Modeling
 
 
 ![sql.png](sql.png)
@@ -58,3 +58,4 @@ As you examine the data, you are overcome with a creeping suspicion that the dat
 
 3. Create a bar chart of average salary by title.
 
+![erd2.png](images/average_salary_by_title.png)
