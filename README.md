@@ -1,7 +1,7 @@
 # SQL_Employee-Database_-A-Mystery-in-Two-Parts
 SQL database, Data Engineering,Data Analysis, Data Modeling
 
-# SQL Homework - Employee Database: A Mystery in Two Parts
+# SQL - Employee Database: A Mystery in Two Parts
 
 ![sql.png](sql.png)
 
