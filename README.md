@@ -2,7 +2,7 @@
 SQL Database, Data Engineering,Data Analysis, Data Modeling
 
 
-![sql.png](sql.png)
+![sql.png](images/sql.png)
 
 ## Background
 
