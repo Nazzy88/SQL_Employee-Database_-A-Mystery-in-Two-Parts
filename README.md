@@ -4,6 +4,7 @@ SQL Database, Data Engineering,Data Analysis, Data Modeling
 
 ![sql.png](images/sql.png)
 
+
 ## Background
 
 It is a beautiful spring day, and it is two weeks since you have been hired as a new data engineer at Pewlett Hackard. Your first major task is a research project on employees of the corporation from the 1980s and 1990s. All that remain of the database of employees from that period are six CSV files.
@@ -16,6 +17,15 @@ You will perform:
 
 Note: You may hear the term "Data Modeling" in place of "Data Engineering," but they are the same terms. Data Engineering is the more modern wording instead of Data Modeling.
 
+### Technologies
+* PostgreSQL
+* SQLAlchemy
+* Python
+* Pandas
+* Matplotlib
+* Numpy
+* QuckDBD
+
 #### Data Modeling
 Inspect the CSVs and sketch out an ERD of the tables. Feel free to use a tool like QuickDBD
 ![erd2.png](images/erd2.png)
@@ -26,7 +36,70 @@ Inspect the CSVs and sketch out an ERD of the tables. Feel free to use a tool li
 
 * Import each CSV file into the corresponding SQL table. 
 
+``` python
+CREATE TABLE "titles" (
+    "title_id" VARCHAR(10)   NOT NULL,
+    "title" VARCHAR(30)   NOT NULL,
+    CONSTRAINT "pk_titles" PRIMARY KEY (
+        "title_id"
+     )
+);
 
+CREATE TABLE "departments" (
+    "dept_no" VARCHAR(10)   NOT NULL,
+    "dept_name" VARCHAR(30)   NOT NULL,
+    CONSTRAINT "pk_departments" PRIMARY KEY (
+        "dept_no"
+     )
+);
+
+CREATE TABLE "employees" (
+    "emp_no" INTEGER   NOT NULL,
+    "emp_title_id" VARCHAR(10)   NOT NULL,
+    "birth_date" VARCHAR(8)   NOT NULL,
+    "first_name" VARCHAR(20)   NOT NULL,
+    "last_name" VARCHAR(20)   NOT NULL,
+    "sex" VARCHAR(1)   NOT NULL,
+    "hire_date" VARCHAR(8)   NOT NULL,
+    CONSTRAINT "pk_employees" PRIMARY KEY (
+        "emp_no"
+     )
+);
+
+CREATE TABLE "dept_manager" (
+    "dept_no" VARCHAR(10)   NOT NULL,
+    "emp_no" INTEGER   NOT NULL
+);
+
+CREATE TABLE "salaries" (
+    "emp_no" INTEGER   NOT NULL,
+    "salary" INTEGER   NOT NULL
+);
+
+CREATE TABLE "dept_emp" (
+    "emp_no" INTEGER   NOT NULL,
+    "dept_no" VARCHAR(10)   NOT NULL
+);
+
+ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
+REFERENCES "titles" ("title_id");
+
+ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_dept_no" FOREIGN KEY("dept_no")
+REFERENCES "departments" ("dept_no");
+
+ALTER TABLE "dept_manager" ADD CONSTRAINT "fk_dept_manager_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "employees" ("emp_no");
+
+ALTER TABLE "salaries" ADD CONSTRAINT "fk_salaries_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "employees" ("emp_no");
+
+ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_emp_no" FOREIGN KEY("emp_no")
+REFERENCES "employees" ("emp_no");
+
+ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_dept_no" FOREIGN KEY("dept_no")
+REFERENCES "departments" ("dept_no");
+
+```
 #### Data Analysis
 
 Once you have a complete database, do the following:
