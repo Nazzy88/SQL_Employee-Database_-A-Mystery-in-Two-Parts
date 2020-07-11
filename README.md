@@ -37,6 +37,17 @@ Inspect the CSVs and sketch out an ERD of the tables. Feel free to use a tool li
 * Import each CSV file into the corresponding SQL table. 
 
 ``` python
+-- Data Engineering --
+-- Drop Tables if Existing
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS dept_emp;
+DROP TABLE IF EXISTS dept_manager;
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS salaries;
+DROP TABLE IF EXISTS titles;
+
+-- Exported from QuickDBD: Specifying Data Types, Primary Keys & Foreign Keys 
+-- Import CSV Files Into Corresponding SQL Table
 CREATE TABLE "titles" (
     "title_id" VARCHAR(10)   NOT NULL,
     "title" VARCHAR(30)   NOT NULL,
@@ -99,15 +110,35 @@ REFERENCES "employees" ("emp_no");
 ALTER TABLE "dept_emp" ADD CONSTRAINT "fk_dept_emp_dept_no" FOREIGN KEY("dept_no")
 REFERENCES "departments" ("dept_no");
 
+
+-- Query * FROM Each Table Confirming Data
+SELECT * FROM departments;
+SELECT * FROM titles;
+SELECT * FROM employees;
+SELECT * FROM dept_emp;
+SELECT * FROM dept_manager;
+SELECT * FROM salaries;
+
 ```
 #### Data Analysis
 
 Once you have a complete database, do the following:
 
 1. List the following details of each employee: employee number, last name, first name, sex, and salary.
+```python
+SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salary
+FROM employees
+JOIN salaries
+ON employees.emp_no = salaries.emp_no;
+```
 
 2. List first name, last name, and hire date for employees who were hired in 1986.
-
+```python
+SELECT first_name, last_name, hire_date 
+FROM employees
+WHERE hire_date BETWEEN '1/1/1986' AND '12/31/1986'
+ORDER BY hire_date;
+```
 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
 
 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
