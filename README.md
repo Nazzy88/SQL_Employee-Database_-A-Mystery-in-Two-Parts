@@ -17,7 +17,7 @@ You will perform:
 
 Note: You may hear the term "Data Modeling" in place of "Data Engineering," but they are the same terms. Data Engineering is the more modern wording instead of Data Modeling.
 
-### Technologies
+#### Technologies
 * PostgreSQL
 * SQLAlchemy
 * Python
